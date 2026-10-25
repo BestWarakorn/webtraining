@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ฝึก JavaScript — ปุ่มแรกของฉัน</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="input.js" defer></script>
+    <script src="button.js" defer></script>
+  </head>
+  <body>
+    <main class="card">
+      <p class="label">WEB TRAINING</p>
+      <h1>ปุ่มแรกของฉัน</h1>
+      <p>กรอกข้อความ แล้วกดปุ่มเพื่อแสดงข้อความของคุณ</p>
+      <label for="textInput">ข้อความของคุณ</label>
+      <input id="textInput" type="text" placeholder="ลองพิมพ์ข้อความที่นี่" />
+      <button id="helloButton" type="button">กดฉันเลย</button>
+      <p id="message" class="message" role="status">กำลังรอให้กดปุ่ม…</p>
+    </main>
+  </body>
+</html>
