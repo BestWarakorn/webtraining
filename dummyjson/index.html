@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head><script src="theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DummyJSON Store — ร้านค้าทดลอง</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="auth.js" defer></script><script src="script.js" defer></script>
+</head>
+<body><nav class="site-nav" aria-label="เมนูหลัก"><a class="brand" href="/">DummyJSON Store</a><div><a href="/">สินค้า</a><a href="/history.html">ประวัติคำสั่งซื้อ</a><a href="/#cart-sidebar">ตะกร้า <span id="cart-count">0</span></a><a id="account-link" href="/account.html">เข้าสู่ระบบ / สมัครสมาชิก</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="เปลี่ยนเป็นโหมดมืด" aria-pressed="false">☾ Dark mode</button><button id="logout" type="button" hidden>ออกจากระบบ</button></div><span id="auth-nav-status" role="status"></span></nav>
+  <main class="container store-container">
+    <header>
+      <span class="badge">ฝึกใช้งาน API • DummyJSON</span>
+      <h1>ร้านค้าทดลอง</h1>
+      <p>ค้นพบสินค้าจาก API และลองเรียนรู้การดึงข้อมูลด้วย JavaScript</p>
+    </header>
+
+<div class="store-layout"><div class="catalog"><form id="search-form" role="search">
+      <label for="search">ค้นหาสินค้า (ลองใช้คำว่า phone)</label>
+      <div class="search-row">
+        <input id="search" type="search" placeholder="ค้นหาชื่อสินค้า..." autocomplete="off">
+        <button type="submit">ค้นหา</button>
+      </div>
+    </form>
+
+    <div class="catalog-filters" aria-label="ตัวกรองสินค้า">
+      <div><label for="category-filter">หมวดหมู่</label><select id="category-filter" disabled><option value="">ทุกหมวดหมู่</option></select></div>
+      <div><label for="sort-order">เรียงตาม</label><select id="sort-order">
+        <option value="default">ลำดับเดิม</option>
+        <option value="price-asc">ราคา: ต่ำ → สูง</option>
+        <option value="price-desc">ราคา: สูง → ต่ำ</option>
+        <option value="title-asc">ชื่อ: A → Z</option>
+        <option value="title-desc">ชื่อ: Z → A</option>
+        <option value="rating-desc">คะแนน: สูง → ต่ำ</option>
+        <option value="rating-asc">คะแนน: ต่ำ → สูง</option>
+      </select></div>
+      <button id="reset-filters" type="button">ล้างตัวกรอง</button>
+    </div>
+    <div class="results-bar">
+      <h2>สินค้าทั้งหมด</h2>
+      <span id="result-count"></span>
+    </div>
+    <p id="status" role="status" aria-live="polite">กำลังโหลดสินค้า...</p>
+    <button id="retry" type="button" hidden>ลองอีกครั้ง</button>
+    <section id="products" class="products" aria-label="รายการสินค้า" aria-busy="true"></section>
+    <nav class="pagination" aria-label="เปลี่ยนหน้าสินค้า">
+      <button id="previous" type="button" disabled>← ก่อนหน้า</button>
+      <span id="page-info">หน้า 1</span>
+      <button id="next" type="button" disabled>ถัดไป →</button>
+    </nav>
+</div>    <aside id="cart-sidebar" class="checkout cart-sidebar" aria-labelledby="cart-heading">
+      <h2 id="cart-heading">ตะกร้าสินค้า</h2>
+      <p>ราคาสินค้าเป็น USD • ชำระเงินจำลอง • ไม่รวมส่วนลดและค่าจัดส่ง</p>
+      <div id="cart-items"></div>
+      <p id="cart-total"></p>
+      <form id="checkout-form">
+        <h2>ข้อมูลผู้รับ</h2>
+        <label for="customer-name">ชื่อผู้รับ</label>
+        <input id="customer-name" name="customer_name" required maxlength="100" autocomplete="name">
+        <label for="phone">เบอร์โทร</label>
+        <input id="phone" name="phone" type="tel" required maxlength="30" autocomplete="tel">
+        <label for="address">ที่อยู่จัดส่ง</label>
+        <textarea id="address" name="address" required maxlength="1000" autocomplete="street-address"></textarea>
+        <button id="place-order" type="submit">ยืนยันสั่งซื้อ</button>
+      </form>
+      <p id="order-status" role="status" aria-live="polite"></p>
+    </aside>
+</div>    <footer>ข้อมูลสินค้าจำลองจาก <a href="https://dummyjson.com/docs/products" target="_blank" rel="noopener noreferrer">DummyJSON</a> สำหรับฝึกเขียนเว็บ</footer>
+  </main>
+</body>
+</html>
